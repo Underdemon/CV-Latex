@@ -9,12 +9,12 @@ jobs:
       - name: Compile LaTeX document
         uses: xu-cheng/latex-action@v2
         with:
-          root_file: main.tex
+          root_file: CV.tex
       - name: Uploading artifact
         uses: actions/upload-artifact@v3
         with:
           name: PDF
-          path: main.pdf
+          path: CV.pdf
       - name: Get Time
         id: time
         uses: nanzm/get-time-action@v1.1
@@ -34,7 +34,7 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           upload_url: ${{ steps.create_release.outputs.upload_url }}
-          asset_path: ./main.pdf
+          asset_path: ./CV.pdf
           asset_name:  resume-${{ steps.time.outputs.time }}.pdf
           asset_content_type: application/pdf
           
@@ -65,7 +65,7 @@ jobs:
           sudo sed -i "s/$MEM/$MEMR/" /etc/ImageMagick-6/policy.xml
           
       - name: Convert PDF to PNG
-        run: convert -density 900 -background white -alpha off main.pdf -resize 25% -quality 90 -colorspace RGB resume.png
+        run: convert -density 900 -background white -alpha off CV.pdf -resize 25% -quality 90 -colorspace RGB resume.png
       - name: Commit PNG
         id: commit
         run: |
