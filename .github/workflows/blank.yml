@@ -4,30 +4,29 @@ jobs:
   build_latex:
     runs-on: ubuntu-latest
     permissions:
-      contents: write  # Allows pushing changes to the repository
-      issues: write    # Optional, if your job deals with issues
-      releases: write  # Required for creating and uploading releases
+      contents: write
+      releases: write
     steps:
       - name: Set up Git repository
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4  # Updated to v4
       - name: Compile LaTeX document
         uses: xu-cheng/latex-action@v2
         with:
           root_file: CV.tex
       - name: Uploading artifact
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4  # Updated to v4
         with:
           name: PDF
           path: CV.pdf
       - name: Get Time
         id: time
-        uses: nanzm/get-time-action@v1.1
+        uses: nanzm/get-time-action@v1.2  # Check for the latest version that supports Node.js 20
         with:
           timeZone: -7
           format: 'YYYY-MM-DD-HH-mm-ss'
       - name: Create Release
         id: create_release
-        uses: softprops/action-gh-release@v1
+        uses: softprops/action-gh-release@v2  # Use v2 to support modern environment files
         with:
           name: Resume compiled on ${{ steps.time.outputs.time }}
           tag_name: ${{ steps.time.outputs.time }}
