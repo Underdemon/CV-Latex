@@ -3,6 +3,9 @@ on: [push]
 jobs:
   build_latex:
     runs-on: ubuntu-latest
+    permissions:
+      contents: write  # Ensure write permission for contents (required for creating releases)
+      releases: write  # Grant permission to create releases
     steps:
       - name: Set up Git repository
         uses: actions/checkout@v4  # Updated to v4
