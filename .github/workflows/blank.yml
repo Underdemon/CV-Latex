@@ -3,9 +3,6 @@ on: [push]
 jobs:
   build_latex:
     runs-on: ubuntu-latest
-    permissions:
-      contents: write
-      releases: write
     steps:
       - name: Set up Git repository
         uses: actions/checkout@v4  # Updated to v4
