@@ -17,9 +17,9 @@ jobs:
           path: CV.pdf
       - name: Get Time
         id: time
-        uses: nanzm/get-time-action@v1.2  # Check for the latest version that supports Node.js 20
+        uses: nanzm/get-time-action@v2.0  # Check for the latest version that supports Node.js 20
         with:
-          timeZone: -7
+          timeZone: 0
           format: 'YYYY-MM-DD-HH-mm-ss'
       - name: Create Release
         id: create_release
