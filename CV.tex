@@ -129,6 +129,9 @@
 \newcommand{\resumeSubHeadingListEnd}{\end{itemize}}
 \newcommand{\resumeItemListStart}{\begin{itemize}}
 \newcommand{\resumeItemListEnd}{\end{itemize}\vspace{-5pt}}
+% Nested sub-bullet list: balanced spacing so main->sub, sub->sub and sub->main gaps match
+\newcommand{\resumeSubItemListStart}{\begin{itemize}[topsep=1pt, itemsep=1pt, parsep=0pt, partopsep=0pt]}
+\newcommand{\resumeSubItemListEnd}{\end{itemize}\vspace{-2pt}}
 
 %-------------------------------------------
 %%%%%%  RESUME STARTS HERE  %%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -137,11 +140,6 @@
 \begin{document}
 
 %----------HEADING----------
-% \begin{tabular*}{\textwidth}{l@{\extracolsep{\fill}}r}
-%   \textbf{\href{http://sourabhbajaj.com/}{\Large Sourabh Bajaj}} & Email : \href{mailto:sourabh@sourabhbajaj.com}{sourabh@sourabhbajaj.com}\\
-%   \href{http://sourabhbajaj.com/}{http://www.sourabhbajaj.com} & Mobile : +1-123-456-7890 \\
-% \end{tabular*}
-
 \begin{center}
     \textbf{\Huge \scshape Rayan Khan} \\ \vspace{3pt}
     \small +447401593303 $|$ \href{mailto:rayanakhan05+work@gmail.com}{\underline{rayanakhan05+work@gmail.com}} $|$ 
@@ -156,20 +154,63 @@
   \resumeSubHeadingListStart
 
     \resumeExperienceSubheading
-      {TT\&I Work Experience}{KPMG}
-      {\small{Feb 2024}}
+      {Full Stack Placement Software Engineer}{Crowd Connected}
+      {\small{Aug 2025 -- July 2026}}
       \resumeItemListStart
-        \resumeItem{Corporate work - agile, scrum, kanban, jira, client-developer communications}
-        \resumeItem{Software engineering - C\#, .NET, Blazor, React, product lifecycles, migrating codebases}
-        \resumeItem{Quality assurance - behaviour/test driven development, QA automation frameworks, selenium}
+
+        % --- Session Import ---
+        \resumeItem{Cut event setup time by 90\% -- owned the design, architecture and build of an\\end-to-end batch import system; demoed to the CEO}
+        \resumeSubItemListStart
+          \resumeItem{Built a multi-Lambda pipeline (Node) with multiple ingestion methods over an outbox\\in DynamoDB, with human-in-the-loop conflict asynchronous resolution support}
+            % notes
+              %  ingestion methods: (upload, webhook, scheduled poll)
+          % \resumeItem{Delivered the Angular import and review UI, focusing on side-by-side comparisons and inline editing}
+        \resumeSubItemListEnd
+
+        % --- Generator ---
+        % \resumeItem{Built an internal scaffolding tool (7k LOC) generating customised, development-ready AWS\\Lambdas in 3 languages with standardised logging, DynamoDB/S3 connectors and CI/CD}
+        % \resumeSubItemListStart
+        %   \resumeItem{Introduced mise for per-project toolchains and automated Bitbucket/AWS/SonarQube setup}
+        % \resumeSubItemListEnd
+        \resumeItem{Built an internal scaffolding tool (7k LOC) generating customised, development-ready\\AWS Lambdas in multiple languages with automated Bitbucket/AWS/SonarQube setup}
+
+        % --- TagPlaceEvents performance rewrite ---
+        \resumeItem{Re-architected a dwell-event aggregation Lambda (Java 21), processing 1,000+ S3 files per invocation}
+        \resumeSubItemListStart
+        % 30+ seconds to 15 seconds (remember we upped the limit and it used to take 55+ seconds or something)
+          \resumeItem{Shortened lambda runtime by a factor of 4: sped up S3 I/O using the AWS CRT client\\and a batched parallel processing pipeline (virtual threads, Deephaven CSV)}
+          \resumeSubItemListEnd
+
+        % --- ExpoFP import ---
+        % \resumeItem{Built an end-to-end ingestion service (Kotlin/Angular) converting floorplans into platform regions}
+        % \resumeSubItemListStart
+        %   \resumeItem{Reworked the parser to absorb frequent unannounced upstream format changes under deadline} % ,\\hardening it with runtime schema detection and a \textasciitilde2:1 test-to-code safety net
+        % \resumeSubItemListEnd
+
+        % --- Angular 22 upgrade ---
+        \resumeItem{Systematically feature match and improve a partial port of the entire Angular 11 frontend to Angular 22}
+        \resumeSubItemListStart
+        \resumeItem{Migrate state management to use angular signals, modernise outdated functionality, improve dependency issues} % TODO: WORK ON THIS LINE
+        \resumeSubItemListEnd
+
       \resumeItemListEnd
+
+    % --- KPMG experience --- %
+    % \resumeExperienceSubheading
+    %   {TT\&I Work Experience}{KPMG}
+    %   {\small{Feb 2024}}
+    %   \resumeItemListStart
+    %     \resumeItem{Corporate work - agile, scrum, kanban, jira, client-developer communications}
+    %     \resumeItem{Software engineering - C\#, .NET, Blazor, React, product lifecycles, migrating codebases}
+    %     \resumeItem{Quality assurance - behaviour/test driven development, QA automation frameworks, selenium}
+    %   \resumeItemListEnd
 
     \resumeExperienceSubheadingNoCompany
       {Self Employed Online Tutor}
       {\small{Jan 2021 -- Present}}
       \resumeItemListStart
         \resumeItem{Increased student grades to A/A* in GCSE/A-Level exams through developing customised\\tutoring plans and delivering structured lessons using self-made resources}
-        \resumeItem{Cultivated strong student relationships, balancing time effectively to ensure individualized\\attention and progress for each pupil}
+        % \resumeItem{Cultivated strong student relationships, balancing time effectively to ensure individualized\\attention and progress for each pupil}
       \resumeItemListEnd
 
     \resumeExperienceSubheading
@@ -189,10 +230,9 @@
   \vspace{-3pt}
   \resumeSubHeadingListStart
     \resumeSubheading
-      {Integrated Masters Degree In Computer Science}{University of Surrey}{Sep 2023 -- Jun 2026 (Expected)}{\small{Finished first year on the Dean's list with a 1st - 82\% average}}
-    \resumeSubheadingDouble
-      {A-Levels and GCSEs}{Sutton Grammar School}
-      {A-Levels: Maths –- A, Computer Science –- A, Further Maths –- B, Physics –- B}{Sep 2021 -- Aug 2023}{11 GCSEs at grades 7 to 9 (including Maths, English and Computer Science)}{Sep 2019 -- Aug 2021}
+      {Bachelor Degree In Computer Science}{University of Surrey}{Sep 2023 -- Jun 2027 (Expected)}{\small{Finished first and second year on the Dean's list}}
+    \resumeSubheading
+      {A-Levels}{Sutton Grammar School}{Sep 2021 -- Aug 2023}{\small{A-Levels: Maths –- A, Computer Science –- A, Further Maths –- B, Physics –- B}}
   \resumeSubHeadingListEnd
 
 
@@ -200,39 +240,49 @@
 \section{Projects}
     \resumeSubHeadingListStart
       \resumeProjectHeading
+          {\textbf{edYOUdata} $|$ \emph{React, React Flow, Neo4j, Express.js, Docker}}{}
+          %
+          \resumeItemListStart
+            \resumeItem{Won first place by leading a 6-person team to build an interactive graph visualisation by transforming\\Neo4j data into rendered node/edge structures with animations to simulate the flow of personal data}
+            \resumeItem{Automated layout + edge routing (Elkjs) and memoisation to cut graph re-render cost}
+            % \resumeItem{Set up the team's delivery foundation, standing up a multi-container Docker environment mirroring production, the monorepo and backend--database wiring, and SuperTokens authentication to unblock parallel development}
+          \resumeItemListEnd
+
+          \resumeProjectHeading
           {\textbf{Club Assignment and Management Program} $|$ \emph{Java, JUnit, SQLite}}{\href{https://github.com/Underdemon/clubMatcher}{\small{\underline{Github}}}}
           % 
           \resumeItemListStart
             \resumeItem{Identified a school-wide challenge in club assignments and gathered user requirements to develop a\\command-line program that efficiently matched and managed students' clubs based on their subjects}
             \resumeItem{Implemented the Hungarian and Dijkstra's algorithms from scratch, along with dynamic, generic\\data structures, resulting in optimized performance and functionality}
             \resumeItem{Achieved 100\% test coverage by employing test-driven development, ensuring robust functionality and reliability}
-            \resumeItem{Expanded the feature set by implementing user authentication, user access control, and automatic data backups\\with loadable options, all within a user-friendly text-based interface, enhancing the user experience}
+            % \resumeItem{Expanded the feature set by implementing user authentication, user access control, and automatic data backups\\with loadable options, all within a user-friendly text-based interface, enhancing the user experience}
           \resumeItemListEnd
 
           \resumeProjectHeading
           {\textbf{One Piece Sudoku} $|$ \emph{React, Python}}{\href{https://github.com/Underdemon/one-piece-sudoku}{\small{\underline{Github}}}}
           % 
-          \resumeItemListStart
-            \resumeItem{Planned and created a themed game based on a personal and friend's desire, prioritizing quick-start gameplay}
-            \resumeItem{Established deterministic validation to select from 100s of attributes per render without impacting performance}
-            \resumeItem{Enriched game content through scraping character data from over 1400 pages utilising httpx and selectolax}
-          \resumeItemListEnd
+          % \resumeItemListStart
+            % \resumeItem{Planned and created a themed game based on a personal and friend's desire, prioritizing quick-start gameplay}
 
-        \resumeProjectHeading
-          {\textbf{Morse Code Decoder} $|$ \emph{C}}{}
-          % 
-          \resumeItemListStart
-            \resumeItem{Developed a Morse code decoder using 2 Raspberry Pi's on a breadboard, with an ambitious goal to provide a language-flexible solution, while leading task distribution and fostering clear communication with a colleague}
-            % \resumeItem{Maintained clear communication with a colleague, while implementing a binary tree using pointers and memory management}
-            \resumeItem{Learned about memory management and pointers through implementing a binary tree to decode morse input}
-          \resumeItemListEnd
+          %   \resumeItem{Enriched game content through scraping character data from over 1400 pages utilising httpx and selectolax}
+          %   \resumeItem{Established deterministic validation to select from 100s of attributes per render without impacting performance}
+          % \resumeItemListEnd
 
-          \resumeProjectHeading
-          {\textbf{Student Marks Management System (Hackathon)} $|$ \emph{Python, Django REST, JavaScript, React}}{}
-          % 
-          \resumeItemListStart
-            \resumeItem{Accomplished a functional system within 3 days by mentoring inexperienced team members while actively developing}
-          \resumeItemListEnd
+        % \resumeProjectHeading
+        %   {\textbf{Morse Code Decoder} $|$ \emph{C}}{}
+        %   %
+        %   \resumeItemListStart
+        %     \resumeItem{Developed a Morse code decoder using 2 Raspberry Pi's on a breadboard, with an ambitious goal to provide a language-flexible solution, while leading task distribution and fostering clear communication with a colleague}
+        %     % \resumeItem{Maintained clear communication with a colleague, while implementing a binary tree using pointers and memory management}
+        %     \resumeItem{Learned about memory management and pointers through implementing a binary tree to decode morse input}
+        %   \resumeItemListEnd
+
+          % \resumeProjectHeading
+          % {\textbf{Student Marks Management System (Hackathon)} $|$ \emph{Python, Django REST, JavaScript, React}}{}
+          % % 
+          % \resumeItemListStart
+          %   \resumeItem{Accomplished a functional system within 3 days by mentoring inexperienced team members while actively developing}
+          % \resumeItemListEnd
     \resumeSubHeadingListEnd
 
 
@@ -241,8 +291,11 @@
 %-----------PROGRAMMING SKILLS-----------
 \section{Skills}
  \begin{itemize}[leftmargin=0pt, label={}]
+    % \small{\item{
+    %  Java, Kotlin, TypeScript, JavaScript, Python, C, C++, SQL, Cypher, Bash, HTML, CSS, React, React Flow, Angular, Angular Material, RxJS, Joy UI/MUI, Redux, Node.js, Express.js, Django, Django REST, REST APIs, SuperTokens, AWS, Lambda, DynamoDB, S3, API Gateway, CloudWatch, Cognito, IAM, SAM, CloudFormation, Neo4j, SQLite, NoSQL, Docker, Docker Compose, Caddy, CI/CD, GitLab CI, Bitbucket Pipelines, SonarQube, Terraform, mise, Yeoman, Gradle, esbuild, Git, Linux, JUnit, Mockito, Vitest, TDD, Deephaven, Elkjs, OkHttp3, kotlinx-serialization, SLF4J/MDC, Logback, httpx, selectolax, Agile, Kanban, Scrum
+    % }}
     \small{\item{
-     Java, JavaScript, ExpressJS, ReactJS, C, C++, Python, Django, SQL, NoSQL, Neo4j, Git, CI/CD, Docker, Linux
+      Java, Kotlin, TypeScript, Python, C, C++, SQL, React, Angular, AWS, Neo4j, Docker, CI/CD Pipelines, Linux
     }}
  \end{itemize}
 
@@ -268,10 +321,10 @@
       {Developed, raced and managed a team with 2 electric cars in SGS's Greenpower club}{2021/09 -- 2023/04}
     \resumeAchievements
       {Attained 13th in the country for the Cyber Centurion competition}{2021/10 -- 2022/01}
-    \resumeAchievements
-      {Participated in the British Mathematical Olympiad (BMO) Round 1}{2021 -- 2022}
-    \resumeAchievements
-      {Participated in CyberStart Assess, Game, and the SANS Foundations course}{2019 -- 2021}
+    % \resumeAchievements
+    %   {Participated in the British Mathematical Olympiad (BMO)}{2021 -- 2022}
+    % \resumeAchievements
+    %   {Participated in CyberStart Assess, Game, and the SANS Foundations course}{2019 -- 2021}
     % \resumeAchievements
     %   {Worked effectively as a team to design a remote-control car using CAD}{2019}
  \resumeAchievementsListEnd
@@ -279,3 +332,30 @@
 
 %-------------------------------------------
 \end{document}
+
+
+% new plan
+% experience in order of imoprtance
+%   full stack software engineer at crowd connected 
+%   online tutor
+%   tt&i
+%   compsoc
+% 
+% education
+% 
+% projects
+%   edyoudata (ask uni how to make public, make real demo instance)
+%   club assignment and management
+%   one piece sudoku (since its a real accessible demo)
+%   morse code
+% 
+% skills - add job stuff
+% 
+% achievements (idk to include or not)
+%   edyoudata win
+%   13th cyber centurion
+%   head of sgs
+% ============PROB CUT OFF HERE=======
+%   bmo round 1
+%   greenpower
+%   cyberstart
